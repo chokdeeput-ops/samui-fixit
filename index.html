@@ -1816,15 +1816,23 @@
             } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
             // --- 1. Firebase Config ---
-            const firebaseConfig = {
-                apiKey: "AIzaSyBGtdUugvNWTjvcT8DL1EO0cn7q9YwChxk",
-                authDomain: "samuifixgithubpage.firebaseapp.com",
-                projectId: "samuifixgithubpage",
-                storageBucket: "samuifixgithubpage.firebasestorage.app",
-                messagingSenderId: "426648088200",
-                appId: "1:426648088200:web:ade5bd023450d8ad79f93d",
-                measurementId: "G-2L4E58VQDT",
-            };
+            // คำแนะนำ:
+            // - หาก Preview ในหน้านี้: ไม่ต้องแก้ไขอะไร ระบบจะใช้ค่าอัตโนมัติ
+            // - หากนำไปใช้จริง (GitHub Pages): ให้นำค่าจาก Firebase Console มาแทนที่ข้อความ "ใส่_..." ในปีกกาด้านล่าง
+
+            const firebaseConfig =
+                typeof __firebase_config !== "undefined"
+                    ? JSON.parse(__firebase_config)
+                    : {
+                          apiKey: "AIzaSyBGtdUugvNWTjvcT8DL1EO0cn7q9YwChxk",
+                          authDomain: "samuifixgithubpage.firebaseapp.com",
+                          projectId: "samuifixgithubpage",
+                          storageBucket:
+                              "samuifixgithubpage.firebasestorage.app",
+                          messagingSenderId: "426648088200",
+                          appId: "1:426648088200:web:ade5bd023450d8ad79f93d",
+                      };
+
             const appId =
                 typeof __app_id !== "undefined"
                     ? __app_id
