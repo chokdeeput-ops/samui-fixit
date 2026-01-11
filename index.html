@@ -109,6 +109,10 @@
                         <path d="M21.35 9.87c0-4.63-4.5-8.4-10-8.4s-10 3.77-10 8.4c0 4.15 3.68 7.62 9.07 8.3.35.08.83.2.95.5.12.3.08.76-.08 1.34-.18.63-1.12 2.8-1.24 3.3-.1.52.28.52.72.28.58-.33 9.49-5.55 10.62-8.36 1.13-1.6 1.96-3.4 1.96-5.36z"/>
                     </svg>
                 </a>
+                <!-- Admin Logout (Hidden by default) -->
+                <a href="#" id="admin-logout" onclick="logoutAdmin()" class="hidden text-red-300 hover:text-white ml-2 border-l border-cyan-700 pl-2">
+                    <i class="ph-bold ph-sign-out"></i> Logout
+                </a>
             </div>
         </div>
     </div>
@@ -131,6 +135,7 @@
                 <a href="#" class="text-cyan-600 font-bold">Home</a>
                 <a href="#emergency" class="text-red-600 font-bold hover:text-red-700 transition flex items-center gap-1"><i class="ph-bold ph-siren"></i> 24/7 Emergency</a>
                 <a href="#services-list" class="hover:text-cyan-600 transition">Services</a>
+                <a href="#blogs" class="hover:text-cyan-600 transition">Blogs</a>
                 <a href="#construction-renovation" class="hover:text-cyan-600 transition">Construction</a>
                 <a href="#pricing-guide" class="hover:text-cyan-600 transition">Rates</a>
                 <a href="#contact-footer" class="hover:text-cyan-600 transition">Contact</a>
@@ -154,6 +159,7 @@
                 <a href="#" class="text-cyan-600 font-bold flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-house"></i> Home</a>
                 <a href="#emergency" class="text-red-600 font-bold flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-siren"></i> 24/7 Emergency</a>
                 <a href="#services-list" class="hover:text-cyan-600 transition flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-wrench"></i> Services</a>
+                <a href="#blogs" class="hover:text-cyan-600 transition flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-article"></i> Blogs</a>
                 <a href="#construction-renovation" class="hover:text-cyan-600 transition flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-bricks"></i> Construction</a>
                 <a href="#pricing-guide" class="hover:text-cyan-600 transition flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-currency-thb"></i> Rates</a>
                 <a href="#contact-footer" class="hover:text-cyan-600 transition flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-phone"></i> Contact</a>
@@ -187,11 +193,9 @@
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-10 relative z-20 flex-grow space-y-16 md:space-y-20">
         
-        <!-- NEW: Emergency Service Section -->
+        <!-- Emergency Section -->
         <section id="emergency" class="scroll-mt-28 bg-red-50 rounded-3xl shadow-xl overflow-hidden border-2 border-red-200 relative">
-            <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-            
             <div class="relative z-10 p-6 md:p-10">
                 <div class="text-center mb-8">
                     <span class="bg-red-600 text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider urgent-pulse shadow-md inline-flex items-center gap-2">
@@ -202,7 +206,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <!-- Left: Rates Card -->
                     <div class="bg-white rounded-2xl shadow-lg border border-red-100 overflow-hidden">
                         <div class="bg-gradient-to-r from-red-700 to-red-600 text-white p-5 text-center">
                             <h3 class="text-xl font-bold flex justify-center items-center gap-2"><i class="ph-bold ph-currency-circle-dollar"></i> Emergency Rates</h3>
@@ -237,9 +240,7 @@
                         </div>
                     </div>
 
-                    <!-- Right: Conditions & Call -->
                     <div class="flex flex-col gap-6">
-                        <!-- Warning/Terms -->
                         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-xl shadow-sm">
                             <h4 class="text-lg font-bold text-yellow-800 flex items-center gap-2 mb-3">
                                 <i class="ph-fill ph-warning-circle text-xl"></i> Before You Call / เงื่อนไข
@@ -260,7 +261,6 @@
                             </ul>
                         </div>
 
-                        <!-- Call Button -->
                         <a href="tel:0638419593" class="group bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white rounded-2xl p-6 shadow-lg shadow-red-500/30 flex items-center justify-between transition-all transform hover:-translate-y-1 ring-4 ring-red-100">
                             <div>
                                 <p class="text-red-100 text-xs font-bold uppercase tracking-widest mb-1">Need Help Now?</p>
@@ -276,13 +276,13 @@
             </div>
         </section>
         
-        <!-- Section 1: Construction & Renovation -->
+        <!-- Construction & Renovation -->
         <div id="construction-renovation" class="scroll-mt-28">
              <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                 <i class="ph-fill ph-bricks text-orange-500"></i> Construction & Renovation (ก่อสร้างและรีโนเวท)
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <!-- Service: Construction -->
+                <!-- Service Items -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-orange-500 transition-all cursor-pointer group" onclick="openBookingModal('construction', 'Contact for Quote')">
                     <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-orange-600 group-hover:text-white transition">
                         <i class="ph-fill ph-house"></i>
@@ -294,8 +294,6 @@
                         <button class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-lg font-medium">Get Quote</button>
                     </div>
                 </article>
-
-                <!-- Service: Renovation -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-blue-500 transition-all cursor-pointer group" onclick="openBookingModal('renovation', 'Contact for Quote')">
                     <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-blue-600 group-hover:text-white transition">
                         <i class="ph-fill ph-paint-roller"></i>
@@ -307,8 +305,6 @@
                         <button class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-medium">Get Quote</button>
                     </div>
                 </article>
-
-                <!-- Service: Extension -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-green-500 transition-all cursor-pointer group" onclick="openBookingModal('extension', 'Contact for Quote')">
                     <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-green-600 group-hover:text-white transition">
                         <i class="ph-fill ph-wall"></i>
@@ -323,12 +319,11 @@
             </div>
         </div>
 
-        <!-- Section 2: Pricing Guide (Mock Data Table) - IMPROVED -->
+        <!-- Pricing Guide -->
         <div id="pricing-guide" class="scroll-mt-28">
             <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                 <i class="ph-fill ph-currency-thb text-cyan-600"></i> Service Rates & Location Surcharges (ตารางราคา)
             </h3>
-            
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm md:text-base text-left border-collapse min-w-[600px]">
@@ -341,12 +336,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <!-- Maintenance -->
-                            <tr class="bg-blue-50/50">
-                                <td colspan="4" class="px-6 py-3 text-cyan-800 font-bold flex items-center gap-2">
-                                    <i class="ph-fill ph-wrench"></i> General Maintenance (งานดูแลทั่วไป)
-                                </td>
-                            </tr>
+                            <tr class="bg-blue-50/50"><td colspan="4" class="px-6 py-3 text-cyan-800 font-bold flex items-center gap-2"><i class="ph-fill ph-wrench"></i> General Maintenance (งานดูแลทั่วไป)</td></tr>
                             <tr class="hover:bg-gray-50 transition-colors group">
                                 <td class="px-6 py-4 font-medium text-gray-700 group-hover:text-cyan-600 transition-colors">AC Cleaning (ล้างแอร์)</td>
                                 <td class="px-6 py-4 text-gray-600"><span class="bg-green-100 text-green-700 py-1 px-2 rounded-md text-xs font-bold">฿600</span></td>
@@ -365,137 +355,68 @@
                                 <td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿800</td>
                                 <td class="px-6 py-4 text-gray-500 text-sm">Transport Fee</td>
                             </tr>
-                            
-                            <!-- Construction -->
-                            <tr class="bg-orange-50/50">
-                                <td colspan="4" class="px-6 py-3 text-orange-800 font-bold flex items-center gap-2">
-                                    <i class="ph-fill ph-bricks"></i> Construction & Renovation (งานโครงสร้าง)
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition-colors group">
-                                <td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">New Build (Standard)</td>
-                                <td class="px-6 py-4 text-gray-600">฿20,000 - ฿25,000</td>
-                                <td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿28,000 - ฿35,000</td>
-                                <td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition-colors group">
-                                <td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Renovation (General)</td>
-                                <td class="px-6 py-4 text-gray-600">฿5,000 - ฿10,000</td>
-                                <td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿7,000 - ฿12,000</td>
-                                <td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition-colors group">
-                                <td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Tiling Work (ปูกระเบื้อง)</td>
-                                <td class="px-6 py-4 text-gray-600">฿350 - ฿500</td>
-                                <td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿500 - ฿700</td>
-                                <td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m. (Labor)</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition-colors group">
-                                <td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Painting (ทาสี)</td>
-                                <td class="px-6 py-4 text-gray-600">฿120 - ฿180</td>
-                                <td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿180 - ฿250</td>
-                                <td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td>
-                            </tr>
+                            <tr class="bg-orange-50/50"><td colspan="4" class="px-6 py-3 text-orange-800 font-bold flex items-center gap-2"><i class="ph-fill ph-bricks"></i> Construction & Renovation (งานโครงสร้าง)</td></tr>
+                            <tr class="hover:bg-gray-50 transition-colors group"><td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">New Build (Standard)</td><td class="px-6 py-4 text-gray-600">฿20,000 - ฿25,000</td><td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿28,000 - ฿35,000</td><td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td></tr>
+                            <tr class="hover:bg-gray-50 transition-colors group"><td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Renovation (General)</td><td class="px-6 py-4 text-gray-600">฿5,000 - ฿10,000</td><td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿7,000 - ฿12,000</td><td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td></tr>
+                            <tr class="hover:bg-gray-50 transition-colors group"><td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Tiling Work (ปูกระเบื้อง)</td><td class="px-6 py-4 text-gray-600">฿350 - ฿500</td><td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿500 - ฿700</td><td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m. (Labor)</td></tr>
+                            <tr class="hover:bg-gray-50 transition-colors group"><td class="px-6 py-4 font-medium text-gray-700 group-hover:text-orange-600 transition-colors">Painting (ทาสี)</td><td class="px-6 py-4 text-gray-600">฿120 - ฿180</td><td class="px-6 py-4 text-orange-600 font-medium bg-orange-50/30">฿180 - ฿250</td><td class="px-6 py-4 text-gray-500 text-sm">Per Sq.m.</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <!-- Enhanced Note Section -->
                 <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 border-t border-orange-100 flex flex-col sm:flex-row gap-4">
-                    <div class="bg-orange-100 p-2 rounded-full h-fit text-orange-600 shrink-0">
-                        <i class="ph-fill ph-info text-xl"></i>
-                    </div>
+                    <div class="bg-orange-100 p-2 rounded-full h-fit text-orange-600 shrink-0"><i class="ph-fill ph-info text-xl"></i></div>
                     <div class="text-sm text-gray-700 space-y-2">
                         <p class="font-bold text-orange-800 uppercase tracking-wide text-xs">Important Note / หมายเหตุสำคัญ:</p>
-                        <p><strong>Mountain Zone (โซนเขา):</strong> Areas with steep access or difficult terrain (e.g., Chaweng Noi, Maenam Soi 1-5 top, Lamai Viewpoint). Prices include extra transportation, logistics, and difficulty allowance.</p>
-                        <p><strong>Construction Estimates:</strong> Prices shown are initial estimates for Standard grade materials. Final pricing depends on material selection (Luxury/Imported), site accessibility, and detailed structural engineering.</p>
+                        <p><strong>Mountain Zone (โซนเขา):</strong> Areas with steep access or difficult terrain. Prices include extra transportation & difficulty allowance.</p>
+                        <p><strong>Construction Estimates:</strong> Prices shown are initial estimates. Final pricing depends on material selection and site survey.</p>
                         <p class="text-gray-500 italic">* ราคาก่อสร้างบนเขาอาจมีการเปลี่ยนแปลงขึ้นอยู่กับความยากง่ายในการขนส่งวัสดุและสภาพหน้างานจริง</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Services List (General) -->
+        <!-- General Services -->
         <div id="services-list" class="scroll-mt-28">
             <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                 <i class="ph-fill ph-wrench text-cyan-600"></i> Maintenance Services (บริการดูแลรักษา)
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Service 1 -->
+                <!-- Service Cards -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('pool', 1500)">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="ph-fill ph-swimming-pool"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-blue-600 group-hover:text-white transition"><i class="ph-fill ph-swimming-pool"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">ดูแลสระว่ายน้ำ (Pool Service)</h4>
                     <p class="text-sm text-gray-500 mb-4">Cleaning, Chemical check & Maintenance.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-blue-600 font-bold">฿1,500 / Visit</span>
-                        <button class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-medium" aria-label="Book Pool Service">จองเลย</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-blue-600 font-bold">฿1,500 / Visit</span><button class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-medium">จองเลย</button></div>
                 </article>
-
-                <!-- Service 2 -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('ac', 600)">
-                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-cyan-600 group-hover:text-white transition">
-                        <i class="ph-fill ph-fan"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-cyan-600 group-hover:text-white transition"><i class="ph-fill ph-fan"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">ล้างแอร์ (AC Cleaning)</h4>
                     <p class="text-sm text-gray-500 mb-4">Deep cleaning, Salt stain removal.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-cyan-600 font-bold">฿600 / Unit</span>
-                        <button class="text-sm bg-cyan-50 text-cyan-600 px-3 py-1 rounded-lg font-medium" aria-label="Book AC Cleaning">จองเลย</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-cyan-600 font-bold">฿600 / Unit</span><button class="text-sm bg-cyan-50 text-cyan-600 px-3 py-1 rounded-lg font-medium">จองเลย</button></div>
                 </article>
-
-                <!-- Service 3 -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('clean', 1200)">
-                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-orange-500 group-hover:text-white transition">
-                        <i class="ph-fill ph-broom"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-orange-500 group-hover:text-white transition"><i class="ph-fill ph-broom"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">ทำความสะอาด (Deep Clean)</h4>
                     <p class="text-sm text-gray-500 mb-4">Villa cleaning, Change bed sheets.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-orange-600 font-bold">Start ฿1,200</span>
-                        <button class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-lg font-medium" aria-label="Book Cleaning">จองเลย</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-orange-600 font-bold">Start ฿1,200</span><button class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-lg font-medium">จองเลย</button></div>
                 </article>
-
-                <!-- Service 4 -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('pest', 2000)">
-                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-red-600 group-hover:text-white transition">
-                        <i class="ph-fill ph-bug"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-red-600 group-hover:text-white transition"><i class="ph-fill ph-bug"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">กำจัดแมลง (Pest Control)</h4>
                     <p class="text-sm text-gray-500 mb-4">Mosquito, Termite & Ant control.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-red-600 font-bold">฿2,000 / Visit</span>
-                        <button class="text-sm bg-red-50 text-red-600 px-3 py-1 rounded-lg font-medium" aria-label="Book Pest Control">จองเลย</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-red-600 font-bold">฿2,000 / Visit</span><button class="text-sm bg-red-50 text-red-600 px-3 py-1 rounded-lg font-medium">จองเลย</button></div>
                 </article>
-
-                <!-- Service 5 -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('garden', 800)">
-                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-green-600 group-hover:text-white transition">
-                        <i class="ph-fill ph-plant"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-green-600 group-hover:text-white transition"><i class="ph-fill ph-plant"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">ดูแลสวน (Gardening)</h4>
                     <p class="text-sm text-gray-500 mb-4">Grass cutting, Trimming, Leaf removal.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-green-600 font-bold">฿800 / Hour</span>
-                        <button class="text-sm bg-green-50 text-green-600 px-3 py-1 rounded-lg font-medium" aria-label="Book Gardening">จองเลย</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-green-600 font-bold">฿800 / Hour</span><button class="text-sm bg-green-50 text-green-600 px-3 py-1 rounded-lg font-medium">จองเลย</button></div>
                 </article>
-
-                <!-- Service 6 -->
                 <article class="service-card bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transition-all cursor-pointer group" onclick="openBookingModal('handyman', 500)">
-                    <div class="w-14 h-14 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-slate-600 group-hover:text-white transition">
-                        <i class="ph-fill ph-wrench"></i>
-                    </div>
+                    <div class="w-14 h-14 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center mb-4 text-3xl group-hover:bg-slate-600 group-hover:text-white transition"><i class="ph-fill ph-wrench"></i></div>
                     <h4 class="text-lg font-bold mb-1 text-gray-800">ซ่อมระบบน้ำ-ไฟ (Handyman)</h4>
                     <p class="text-sm text-gray-500 mb-4">Plumbing, Electrical repair.</p>
-                    <div class="flex justify-between items-center border-t pt-4 border-gray-100">
-                        <span class="text-slate-600 font-bold">Start ฿500</span>
-                        <button class="text-sm bg-slate-50 text-slate-600 px-3 py-1 rounded-lg font-medium" aria-label="Book Handyman">เรียกช่าง</button>
-                    </div>
+                    <div class="flex justify-between items-center border-t pt-4 border-gray-100"><span class="text-slate-600 font-bold">Start ฿500</span><button class="text-sm bg-slate-50 text-slate-600 px-3 py-1 rounded-lg font-medium">เรียกช่าง</button></div>
                 </article>
             </div>
         </div>
@@ -507,76 +428,23 @@
                 <h3 class="text-3xl font-bold text-gray-800 mt-3">Monthly Villa Packages<br><span class="text-xl text-gray-500">แพ็คเกจดูแลรายเดือน</span></h3>
                 <p class="text-gray-500 mt-2">Continuous care for your vacation home.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Package 1: Basic -->
+                <!-- Package Cards -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
-                    <div class="p-6 bg-gray-50 border-b border-gray-100">
-                        <h4 class="text-xl font-bold text-gray-800">Garden & Pool (Basic)</h4>
-                        <p class="text-sm text-gray-500 mt-1">Small Villa / วิลล่าขนาดเล็ก</p>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-3xl font-bold text-cyan-600">฿4,500</span>
-                            <span class="text-gray-500 ml-1">/ Month</span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow">
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Pool Cleaning 4 times/mo</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Chemical Check (วัดค่าน้ำ)</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Garden Trimming 2 times/mo</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Leaf Removal (เก็บกวาดใบไม้)</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openBookingModal('pack_basic', 4500)" class="w-full py-3 rounded-xl border-2 border-cyan-600 text-cyan-600 font-bold hover:bg-cyan-600 hover:text-white transition">Select Plan</button>
-                    </div>
+                    <div class="p-6 bg-gray-50 border-b border-gray-100"><h4 class="text-xl font-bold text-gray-800">Garden & Pool (Basic)</h4><p class="text-sm text-gray-500 mt-1">Small Villa / วิลล่าขนาดเล็ก</p><div class="mt-4 flex items-baseline"><span class="text-3xl font-bold text-cyan-600">฿4,500</span><span class="text-gray-500 ml-1">/ Month</span></div></div>
+                    <div class="p-6 flex-grow"><ul class="space-y-3 text-sm text-gray-600"><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Pool Cleaning 4 times/mo</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Chemical Check</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Garden Trimming 2 times/mo</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Leaf Removal</li></ul></div>
+                    <div class="p-6 pt-0"><button onclick="openBookingModal('pack_basic', 4500)" class="w-full py-3 rounded-xl border-2 border-cyan-600 text-cyan-600 font-bold hover:bg-cyan-600 hover:text-white transition">Select Plan</button></div>
                 </div>
-
-                <!-- Package 2: Standard -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-orange-400 relative flex flex-col transform md:-translate-y-4 hover:shadow-2xl transition duration-300">
                     <div class="absolute top-0 right-0 bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Best Seller</div>
-                    <div class="p-6 bg-orange-50 border-b border-orange-100">
-                        <h4 class="text-xl font-bold text-gray-800">Cleaning (Standard)</h4>
-                        <p class="text-sm text-gray-500 mt-1">For Cleanliness / เน้นความสะอาด</p>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-3xl font-bold text-orange-500">฿7,500</span>
-                            <span class="text-gray-500 ml-1">/ Month</span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow">
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> <b>All in Basic Package</b></li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Maid Cleaning 4 times/mo</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Laundry Service (ซักรีด)</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Exterior Glass Cleaning</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openBookingModal('pack_standard', 7500)" class="w-full py-3 rounded-xl bg-gradient-to-r from-orange-400 to-red-500 text-white font-bold hover:shadow-lg transition">Select Plan</button>
-                    </div>
+                    <div class="p-6 bg-orange-50 border-b border-orange-100"><h4 class="text-xl font-bold text-gray-800">Cleaning (Standard)</h4><p class="text-sm text-gray-500 mt-1">For Cleanliness / เน้นความสะอาด</p><div class="mt-4 flex items-baseline"><span class="text-3xl font-bold text-orange-500">฿7,500</span><span class="text-gray-500 ml-1">/ Month</span></div></div>
+                    <div class="p-6 flex-grow"><ul class="space-y-3 text-sm text-gray-600"><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> <b>All in Basic Package</b></li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Maid Cleaning 4 times/mo</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Laundry Service</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Exterior Glass Cleaning</li></ul></div>
+                    <div class="p-6 pt-0"><button onclick="openBookingModal('pack_standard', 7500)" class="w-full py-3 rounded-xl bg-gradient-to-r from-orange-400 to-red-500 text-white font-bold hover:shadow-lg transition">Select Plan</button></div>
                 </div>
-
-                <!-- Package 3: Premium -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
-                    <div class="p-6 bg-gray-50 border-b border-gray-100">
-                        <h4 class="text-xl font-bold text-gray-800">Full Service (Elite)</h4>
-                        <p class="text-sm text-gray-500 mt-1">Worry-free / ดูแลครบวงจร</p>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-3xl font-bold text-gray-800">฿12,000</span>
-                            <span class="text-gray-500 ml-1">/ Month</span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow">
-                        <ul class="space-y-3 text-sm text-gray-600">
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> <b>All in Standard Package</b></li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Pest Control (Monthly)</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> AC Cleaning 2 units (Every 3 mo)</li>
-                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> On-call Handyman 24h</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 pt-0">
-                        <button onclick="openBookingModal('pack_elite', 12000)" class="w-full py-3 rounded-xl border-2 border-gray-800 text-gray-800 font-bold hover:bg-gray-800 hover:text-white transition">Select Plan</button>
-                    </div>
+                    <div class="p-6 bg-gray-50 border-b border-gray-100"><h4 class="text-xl font-bold text-gray-800">Full Service (Elite)</h4><p class="text-sm text-gray-500 mt-1">Worry-free / ดูแลครบวงจร</p><div class="mt-4 flex items-baseline"><span class="text-3xl font-bold text-gray-800">฿12,000</span><span class="text-gray-500 ml-1">/ Month</span></div></div>
+                    <div class="p-6 flex-grow"><ul class="space-y-3 text-sm text-gray-600"><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> <b>All in Standard Package</b></li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> Pest Control (Monthly)</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> AC Cleaning 2 units (Every 3 mo)</li><li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-green-500 text-lg"></i> On-call Handyman 24h</li></ul></div>
+                    <div class="p-6 pt-0"><button onclick="openBookingModal('pack_elite', 12000)" class="w-full py-3 rounded-xl border-2 border-gray-800 text-gray-800 font-bold hover:bg-gray-800 hover:text-white transition">Select Plan</button></div>
                 </div>
             </div>
         </div>
@@ -584,299 +452,212 @@
         <!-- My Booking -->
         <div id="booking-section" class="scroll-mt-28 bg-white rounded-3xl p-8 shadow-xl">
             <h3 class="text-2xl font-bold text-gray-800 mb-6 flex justify-between items-center">
-                <span class="flex items-center gap-2">
-                    <i class="ph-fill ph-clipboard-text text-orange-500"></i> My Bookings (รายการจอง)
-                </span>
+                <span class="flex items-center gap-2"><i class="ph-fill ph-clipboard-text text-orange-500"></i> My Bookings (รายการจอง)</span>
                 <span class="text-xs font-normal text-gray-500 bg-gray-100 px-3 py-1 rounded-full border">Real-time update</span>
             </h3>
-            
             <div id="booking-list" class="space-y-4">
-                <div class="text-center py-12 text-gray-400">
-                    <i class="ph ph-spinner animate-spin text-4xl mb-3 text-cyan-500"></i>
-                    <p>Loading data...</p>
-                </div>
+                <div class="text-center py-12 text-gray-400"><i class="ph ph-spinner animate-spin text-4xl mb-3 text-cyan-500"></i><p>Loading data...</p></div>
             </div>
         </div>
 
-        <!-- NEW: Reviews / Testimonials Section -->
+        <!-- Blog Section -->
+        <section id="blogs" class="scroll-mt-28 py-8">
+            <div class="flex justify-between items-end mb-8 px-2">
+                <div>
+                    <span class="text-cyan-600 font-bold tracking-wider uppercase text-sm bg-cyan-100 px-3 py-1 rounded-full shadow-sm"><i class="ph-fill ph-newspaper"></i> Knowledge Hub</span>
+                    <h3 class="text-3xl font-bold text-gray-800 mt-3 flex items-center gap-2">Latest Articles <button onclick="openBlogModal()" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-500 px-2 py-1 rounded border ml-2 transition">+ Write New</button><br><span class="text-xl text-gray-500 font-normal">บทความและเกร็ดความรู้</span></h3>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-cyan-600 font-bold hover:underline">View All <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+            <div id="blog-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="col-span-full text-center py-12 text-gray-400"><i class="ph ph-spinner animate-spin text-3xl mb-2"></i><p>Loading articles...</p></div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
         <section id="reviews" class="scroll-mt-28 py-8">
             <div class="text-center mb-10">
-                <span class="text-yellow-600 font-bold tracking-wider uppercase text-sm bg-yellow-100 px-3 py-1 rounded-full shadow-sm">
-                    <i class="ph-fill ph-star"></i> Testimonials
-                </span>
+                <span class="text-yellow-600 font-bold tracking-wider uppercase text-sm bg-yellow-100 px-3 py-1 rounded-full shadow-sm"><i class="ph-fill ph-star"></i> Testimonials</span>
                 <h3 class="text-3xl font-bold text-gray-800 mt-3">What Our Customers Say<br><span class="text-xl text-gray-500">เสียงตอบรับจากลูกค้าจริง</span></h3>
                 <p class="text-gray-500 mt-2">Trusted by over 500+ villas and homes in Koh Samui.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1: Foreigner / Villa Owner -->
                 <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full transform hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg">
-                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                    </div>
-                    <div class="mb-6 flex-grow">
-                        <i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i>
-                        <p class="text-gray-600 italic leading-relaxed">"Excellent service! The AC cleaning team was very professional and polite. They arrived exactly on time and cleaned up everything afterwards. Highly recommend for expats in Samui looking for English-speaking staff."</p>
-                    </div>
-                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl shadow-inner">JD</div>
-                        <div>
-                            <h5 class="font-bold text-gray-800">John Davidson</h5>
-                            <p class="text-xs text-gray-500">Villa Owner, Maenam</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                    <div class="mb-6 flex-grow"><i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i><p class="text-gray-600 italic leading-relaxed">"Excellent service! The AC cleaning team was very professional and polite. They arrived exactly on time and cleaned up everything afterwards. Highly recommend for expats in Samui looking for English-speaking staff."</p></div>
+                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4"><div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl shadow-inner">JD</div><div><h5 class="font-bold text-gray-800">John Davidson</h5><p class="text-xs text-gray-500">Villa Owner, Maenam</p></div></div>
                 </div>
-
-                <!-- Review 2: Local / Emergency -->
+                <!-- More reviews... -->
                 <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full transform hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg">
-                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                    </div>
-                    <div class="mb-6 flex-grow">
-                        <i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i>
-                        <p class="text-gray-600 italic leading-relaxed">"ประทับใจบริการช่างฉุกเฉินมากค่ะ ท่อน้ำแตกตอนตี 2 โทรไปแป๊บเดียวช่างมาถึง จัดการซ่อมให้เสร็จสรรพ ราคามาตรฐานไม่บวกเพิ่มมั่วซั่ว เป็นกันเองมาก แนะนำเลยค่ะสำหรับคนสมุย"</p>
-                    </div>
-                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4">
-                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-xl shadow-inner">P</div>
-                        <div>
-                            <h5 class="font-bold text-gray-800">คุณพิมพ์ใจ</h5>
-                            <p class="text-xs text-gray-500">Restaurant Owner, Bophut</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                    <div class="mb-6 flex-grow"><i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i><p class="text-gray-600 italic leading-relaxed">"ประทับใจบริการช่างฉุกเฉินมากค่ะ ท่อน้ำแตกตอนตี 2 โทรไปแป๊บเดียวช่างมาถึง จัดการซ่อมให้เสร็จสรรพ ราคามาตรฐานไม่บวกเพิ่มมั่วซั่ว เป็นกันเองมาก แนะนำเลยค่ะสำหรับคนสมุย"</p></div>
+                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4"><div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-xl shadow-inner">P</div><div><h5 class="font-bold text-gray-800">คุณพิมพ์ใจ</h5><p class="text-xs text-gray-500">Restaurant Owner, Bophut</p></div></div>
                 </div>
-
-                <!-- Review 3: Monthly Package -->
                 <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full transform hover:-translate-y-1 transition duration-300">
-                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg">
-                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i>
-                    </div>
-                    <div class="mb-6 flex-grow">
-                        <i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i>
-                        <p class="text-gray-600 italic leading-relaxed">"We use their monthly pool and gardening package for our rental villa. The team sends photo updates via Line every visit which gives us peace of mind when we are not on the island. Very reliable."</p>
-                    </div>
-                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl shadow-inner">S</div>
-                        <div>
-                            <h5 class="font-bold text-gray-800">Sarah & Mike</h5>
-                            <p class="text-xs text-gray-500">Lamai Beach Villa</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4 text-lg"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i></div>
+                    <div class="mb-6 flex-grow"><i class="ph-fill ph-quotes text-3xl text-gray-200 block mb-2"></i><p class="text-gray-600 italic leading-relaxed">"We use their monthly pool and gardening package for our rental villa. The team sends photo updates via Line every visit which gives us peace of mind when we are not on the island. Very reliable."</p></div>
+                    <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4"><div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl shadow-inner">S</div><div><h5 class="font-bold text-gray-800">Sarah & Mike</h5><p class="text-xs text-gray-500">Lamai Beach Villa</p></div></div>
                 </div>
-            </div>
-            
-            <!-- Trust Badges -->
-            <div class="mt-12 flex flex-wrap justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition duration-500">
-               <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border">
-                   <i class="ph-fill ph-shield-check text-green-500 text-xl"></i>
-                   <span class="text-sm font-bold text-gray-600">Verified Pros</span>
-               </div>
-               <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border">
-                   <i class="ph-fill ph-clock text-blue-500 text-xl"></i>
-                   <span class="text-sm font-bold text-gray-600">On-Time Guarantee</span>
-               </div>
-               <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border">
-                   <i class="ph-fill ph-heart text-red-500 text-xl"></i>
-                   <span class="text-sm font-bold text-gray-600">100% Satisfaction</span>
-               </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer id="contact-footer" class="bg-slate-900 text-slate-300 pt-10 md:pt-16 pb-6 border-t border-slate-800 scroll-mt-28">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <!-- Column 1: About -->
-                <div class="text-center sm:text-left">
-                    <div class="flex items-center justify-center sm:justify-start gap-2 mb-4 text-white">
-                        <div class="bg-cyan-500 p-1.5 rounded shadow-lg text-white">
-                            <i class="ph-fill ph-island text-lg"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Samui Fixit</h3>
-                    </div>
-                    <p class="text-sm leading-relaxed text-slate-400 mb-4">
-                        We are the #1 Home & Villa maintenance service in Koh Samui. Local professional team, fast service, reliable and fair price.
-                        <br><br>เราคือผู้ให้บริการดูแลบ้านอันดับ 1 ในเกาะสมุย
-                    </p>
-                    <div class="flex gap-3 justify-center sm:justify-start">
-                        <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-cyan-600 hover:text-white transition"><i class="ph-fill ph-facebook-logo"></i></a>
-                        <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-cyan-600 hover:text-white transition"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="#" aria-label="Tiktok" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-cyan-600 hover:text-white transition"><i class="ph-fill ph-tiktok-logo"></i></a>
-                    </div>
-                </div>
-
-                <!-- Column 2: Quick Links -->
-                <div class="text-center sm:text-left">
-                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-caret-right"></i> Home / หน้าแรก</a></li>
-                        <li><a href="#services-list" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-caret-right"></i> Services / บริการ</a></li>
-                        <li><a href="#packages" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-caret-right"></i> Packages / แพ็คเกจ</a></li>
-                        <li><a href="#construction-renovation" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-caret-right"></i> Construction / ก่อสร้าง</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-caret-right"></i> Privacy Policy</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Services -->
-                <div class="text-center sm:text-left">
-                    <h4 class="text-white font-bold text-lg mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-check-circle text-cyan-600"></i> Pool Cleaning</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-check-circle text-cyan-600"></i> AC Cleaning</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-check-circle text-cyan-600"></i> House Construction</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-check-circle text-cyan-600"></i> Renovation</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition flex items-center justify-center sm:justify-start gap-2"><i class="ph-bold ph-check-circle text-cyan-600"></i> Plumbing & Electric</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 4: Contact -->
-                <div class="text-center sm:text-left">
-                    <h4 class="text-white font-bold text-lg mb-4">Contact Us / ติดต่อเรา</h4>
-                    <ul class="space-y-4 text-sm">
-                        <li class="flex gap-3 justify-center sm:justify-start">
-                            <i class="ph-fill ph-map-pin text-cyan-500 text-xl shrink-0"></i>
-                            <span>Koh Samui, Surat Thani</span>
-                        </li>
-                        <li class="flex gap-3 justify-center sm:justify-start">
-                            <i class="ph-fill ph-phone text-cyan-500 text-xl shrink-0"></i>
-                            <span><a href="tel:0638419593" class="hover:text-white transition">063-841-9593 (TH/EN)</a><br><span class="text-slate-500 text-xs">Available 24/7</span></span>
-                        </li>
-                        <li class="flex gap-3 justify-center sm:justify-start">
-                            <i class="ph-fill ph-chat-circle-dots text-cyan-500 text-xl shrink-0"></i>
-                            <span>Line: samuifix</span>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="admin-login-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2"><i class="ph-fill ph-lock-key"></i> Admin Access</h3>
+                <button onclick="closeAdminLoginModal()" class="text-gray-400 hover:text-red-500 text-2xl transition">&times;</button>
             </div>
-
-            <!-- Copyright Area -->
-            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
-                <p>&copy; 2024 Samui Fixit Co., Ltd. All rights reserved.</p>
-                <div class="mt-2 flex justify-center gap-4">
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                    <span>•</span>
-                    <a href="#" class="hover:text-white">Cookie Policy</a>
+            <p class="text-sm text-gray-500 mb-4">Please log in to manage blog posts.</p>
+            <form id="admin-login-form" onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-600 mb-1">Email</label>
+                    <input type="email" id="admin-email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none">
                 </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal Form -->
-    <div id="booking-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
-            <div class="flex justify-between items-center mb-4 border-b pb-3">
-                <div class="flex items-center gap-3">
-                    <div class="bg-blue-100 p-2 rounded-lg text-blue-600">
-                        <i class="ph-bold ph-calendar-check text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">Booking / นัดหมาย</h3>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-600 mb-1">Password</label>
+                    <input type="password" id="admin-password" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none">
                 </div>
-                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-red-500 text-2xl transition" aria-label="Close">&times;</button>
-            </div>
-            
-            <form id="booking-form" onsubmit="submitBooking(event)" class="overflow-y-auto max-h-[80vh]">
-                <div class="bg-blue-50 p-4 rounded-xl mb-6 flex justify-between items-center">
-                    <div class="w-full">
-                        <p class="text-xs text-blue-500 font-bold uppercase tracking-wider mb-1">Service</p>
-                        <input type="text" id="service-name" class="bg-transparent border-none p-0 text-gray-800 font-bold w-full focus:ring-0 text-lg truncate" readonly>
-                    </div>
-                </div>
-
-                <!-- Service Terms -->
-                <div id="service-terms" class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-xs text-yellow-800 hidden"></div>
-
-                <!-- Dynamic input for price or quote text -->
-                <div class="mb-4" id="price-container">
-                    <label class="block text-sm font-semibold text-gray-600 mb-2">Est. Price / Rate</label>
-                    <input type="text" id="service-price" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-500 focus:outline-none" readonly>
-                </div>
-
-                <!-- New: Contact Info -->
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-600 mb-2">Phone (เบอร์โทร)</label>
-                        <input type="tel" id="booking-phone" required placeholder="08x-xxx-xxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-600 mb-2">Line / WhatsApp</label>
-                        <input type="text" id="booking-social" placeholder="ID or Number" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-600 mb-2">Date</label>
-                        <input type="date" id="booking-date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-600 mb-2">Time</label>
-                        <input type="time" id="booking-time" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition">
-                    </div>
-                </div>
-
-                <!-- New: Location & Map -->
-                <div class="mb-4">
-                    <label class="block text-sm font-semibold text-gray-600 mb-2">Location / Map Link</label>
-                    <div class="flex gap-2 mb-2">
-                        <input type="text" id="booking-map-link" placeholder="Paste Google Maps Link..." class="flex-grow bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition text-sm">
-                        <button type="button" onclick="getCurrentLocation()" class="bg-cyan-100 text-cyan-700 px-4 rounded-xl font-bold hover:bg-cyan-200 transition flex items-center gap-1 text-sm whitespace-nowrap">
-                            <i class="ph-bold ph-map-pin"></i> GPS
-                        </button>
-                    </div>
-                    <textarea id="booking-note" rows="2" placeholder="Address detail e.g. Villa Lamai Soi 3 / บ้านเลขที่ 99..." class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></textarea>
-                </div>
-
-                <!-- New: Site Photo -->
-                <div class="mb-6">
-                    <label class="block text-sm font-semibold text-gray-600 mb-2">Site Photo (รูปหน้างาน)</label>
-                    <div class="relative border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-cyan-500 transition-colors cursor-pointer" onclick="document.getElementById('booking-photo').click()">
-                        <input type="file" id="booking-photo" accept="image/*" class="hidden" onchange="handleFileSelect(this)">
-                        <div id="photo-preview" class="hidden mb-2">
-                            <img id="preview-img" src="" alt="Preview" class="h-24 mx-auto rounded-lg shadow-sm">
-                            <p class="text-xs text-green-600 mt-1 font-bold">Photo Selected!</p>
-                        </div>
-                        <div id="photo-placeholder">
-                            <i class="ph-duotone ph-image text-4xl text-gray-300 mb-2"></i>
-                            <p class="text-xs text-gray-400">Click to upload photo<br>(Optional)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30 flex justify-center items-center gap-2 text-lg">
-                    <span>Submit Request</span>
-                    <i class="ph-bold ph-paper-plane-right"></i>
-                </button>
+                <button type="submit" id="admin-login-btn" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-xl transition shadow-lg">Login</button>
             </form>
         </div>
     </div>
 
-    <!-- Floating Contact Buttons (New Feature) -->
-    <div class="fixed bottom-6 right-6 z-[60] flex flex-col gap-3 group">
-        <!-- Label tooltip (visible on hover) -->
-        <div class="absolute bottom-full right-0 mb-2 w-max bg-gray-800 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            Chat with us!
+    <!-- Blog Post Modal -->
+    <div id="blog-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white rounded-3xl w-full max-w-2xl p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 my-8" id="blog-modal-content">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2"><i class="ph-fill ph-pencil-simple text-cyan-600"></i> Post New Article (SEO Optimized)</h3>
+                <button onclick="closeBlogModal()" class="text-gray-400 hover:text-red-500 text-2xl transition">&times;</button>
+            </div>
+            
+            <form id="blog-form" onsubmit="submitBlog(event)" class="space-y-5">
+                <!-- Content Section -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Title (หัวข้อบทความ)</label>
+                        <input type="text" id="blog-title" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition" onkeyup="generateSlug()">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Category</label>
+                            <select id="blog-category" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition">
+                                <option>Maintenance</option>
+                                <option>Repair Guide</option>
+                                <option>News</option>
+                                <option>Promotion</option>
+                                <option>Lifestyle</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Author</label>
+                            <input type="text" id="blog-author" value="Admin" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Excerpt (เนื้อหาย่อ)</label>
+                        <textarea id="blog-excerpt" rows="3" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition" placeholder="สรุปเนื้อหาให้น่าสนใจ..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Image URL</label>
+                        <div class="flex gap-2">
+                            <input type="url" id="blog-image" placeholder="https://example.com/image.jpg" class="flex-grow bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition">
+                            <input type="text" id="blog-alt" placeholder="Image Alt Text (SEO)" class="w-1/3 bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition text-sm" title="คำอธิบายรูปภาพสำหรับ Google">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1 ml-1">*Alt Text helps Google understand your image.</p>
+                    </div>
+                </div>
+
+                <!-- SEO Section (New Feature) -->
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 mt-4">
+                    <h4 class="text-sm font-bold text-cyan-800 mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
+                        <i class="ph-fill ph-magnifying-glass"></i> SEO Settings (ตั้งค่าการค้นหา)
+                    </h4>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">URL Slug (Friendly URL)</label>
+                            <div class="flex items-center bg-white border border-gray-200 rounded-lg px-3 py-2">
+                                <span class="text-gray-400 text-xs mr-1">samuifixit.com/blog/</span>
+                                <input type="text" id="blog-slug" placeholder="your-article-slug" class="flex-grow text-sm text-gray-600 outline-none font-mono">
+                            </div>
+                            <p class="text-[10px] text-gray-400 mt-1">Auto-generated from title. Keep it short and English only.</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Meta Description (150-160 chars)</label>
+                            <textarea id="blog-meta-desc" rows="2" class="w-full bg-white border border-gray-200 rounded-lg p-2 text-sm focus:ring-1 focus:ring-cyan-500 outline-none" placeholder="คำอธิบายที่จะโชว์ในหน้าค้นหา Google..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Focus Keywords (คีย์เวิร์ดหลัก)</label>
+                            <input type="text" id="blog-keywords" placeholder="e.g. ซ่อมแอร์สมุย, villa maintenance, pool cleaning" class="w-full bg-white border border-gray-200 rounded-lg p-2 text-sm focus:ring-1 focus:ring-cyan-500 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="closeBlogModal()" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3 rounded-xl transition">Cancel</button>
+                    <button type="submit" id="blog-submit-btn" class="w-2/3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg flex justify-center items-center gap-2">
+                        <i class="ph-bold ph-paper-plane-right"></i> Publish Article
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <!-- Line Button -->
-        <a href="https://line.me/ti/p/~samuifix" target="_blank" rel="noopener noreferrer" class="bg-[#06C755] hover:bg-[#05b34c] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="Contact via Line">
-            <!-- Fixed: Line Logo SVG for Floating Button -->
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-                <path d="M21.35 9.87c0-4.63-4.5-8.4-10-8.4s-10 3.77-10 8.4c0 4.15 3.68 7.62 9.07 8.3.35.08.83.2.95.5.12.3.08.76-.08 1.34-.18.63-1.12 2.8-1.24 3.3-.1.52.28.52.72.28.58-.33 9.49-5.55 10.62-8.36 1.13-1.6 1.96-3.4 1.96-5.36z"/>
-            </svg>
-        </a>
-
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/66638419593" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] hover:bg-[#20bd5a] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="Contact via WhatsApp">
-            <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
-        </a>
     </div>
 
-    <!-- Firebase SDK Setup -->
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <div class="flex items-center gap-3"><div class="bg-blue-100 p-2 rounded-lg text-blue-600"><i class="ph-bold ph-calendar-check text-xl"></i></div><h3 class="text-xl font-bold text-gray-800">Booking / นัดหมาย</h3></div>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-red-500 text-2xl transition" aria-label="Close">&times;</button>
+            </div>
+            <form id="booking-form" onsubmit="submitBooking(event)" class="overflow-y-auto max-h-[80vh]">
+                <div class="bg-blue-50 p-4 rounded-xl mb-6 flex justify-between items-center"><div class="w-full"><p class="text-xs text-blue-500 font-bold uppercase tracking-wider mb-1">Service</p><input type="text" id="service-name" class="bg-transparent border-none p-0 text-gray-800 font-bold w-full focus:ring-0 text-lg truncate" readonly></div></div>
+                <div id="service-terms" class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-xs text-yellow-800 hidden"></div>
+                <div class="mb-4" id="price-container"><label class="block text-sm font-semibold text-gray-600 mb-2">Est. Price / Rate</label><input type="text" id="service-price" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-500 focus:outline-none" readonly></div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Phone (เบอร์โทร)</label><input type="tel" id="booking-phone" required placeholder="08x-xxx-xxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
+                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Line / WhatsApp</label><input type="text" id="booking-social" placeholder="ID or Number" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Date</label><input type="date" id="booking-date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
+                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Time</label><input type="time" id="booking-time" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-gray-600 mb-2">Location / Map Link</label>
+                    <div class="flex gap-2 mb-2"><input type="text" id="booking-map-link" placeholder="Paste Google Maps Link..." class="flex-grow bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition text-sm"><button type="button" onclick="getCurrentLocation()" class="bg-cyan-100 text-cyan-700 px-4 rounded-xl font-bold hover:bg-cyan-200 transition flex items-center gap-1 text-sm whitespace-nowrap"><i class="ph-bold ph-map-pin"></i> GPS</button></div>
+                    <textarea id="booking-note" rows="2" placeholder="Address detail e.g. Villa Lamai Soi 3 / บ้านเลขที่ 99..." class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></textarea>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-600 mb-2">Site Photo (รูปหน้างาน)</label>
+                    <div class="relative border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-cyan-500 transition-colors cursor-pointer" onclick="document.getElementById('booking-photo').click()">
+                        <input type="file" id="booking-photo" accept="image/*" class="hidden" onchange="handleFileSelect(this)"><div id="photo-preview" class="hidden mb-2"><img id="preview-img" src="" alt="Preview" class="h-24 mx-auto rounded-lg shadow-sm"><p class="text-xs text-green-600 mt-1 font-bold">Photo Selected!</p></div><div id="photo-placeholder"><i class="ph-duotone ph-image text-4xl text-gray-300 mb-2"></i><p class="text-xs text-gray-400">Click to upload photo<br>(Optional)</p></div>
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30 flex justify-center items-center gap-2 text-lg"><span>Submit Request</span><i class="ph-bold ph-paper-plane-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-6 right-6 z-[60] flex flex-col gap-3 group">
+        <div class="absolute bottom-full right-0 mb-2 w-max bg-gray-800 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">Chat with us!</div>
+        <a href="https://line.me/ti/p/~samuifix" target="_blank" rel="noopener noreferrer" class="bg-[#06C755] hover:bg-[#05b34c] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="Contact via Line"><svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path d="M21.35 9.87c0-4.63-4.5-8.4-10-8.4s-10 3.77-10 8.4c0 4.15 3.68 7.62 9.07 8.3.35.08.83.2.95.5.12.3.08.76-.08 1.34-.18.63-1.12 2.8-1.24 3.3-.1.52.28.52.72.28.58-.33 9.49-5.55 10.62-8.36 1.13-1.6 1.96-3.4 1.96-5.36z"/></svg></a>
+        <a href="https://wa.me/66638419593" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] hover:bg-[#20bd5a] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="Contact via WhatsApp"><i class="ph-fill ph-whatsapp-logo text-3xl"></i></a>
+    </div>
+
+    <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, getDocs, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- 1. Firebase Config (อัปเดตค่าของคุณแล้ว) ---
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
@@ -924,20 +705,109 @@
 
         initApp();
 
+        // Auth State Listener
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 currentUser = user;
-                document.getElementById('user-status').innerText = `ID: ${user.uid.substring(0, 5)}... (Online)`;
-                document.getElementById('user-status').classList.remove('text-gray-500');
-                document.getElementById('user-status').classList.add('text-green-600', 'font-medium');
-                
+                // Check if user is anonymous or admin (email)
+                if (user.isAnonymous) {
+                    document.getElementById('user-status').innerText = `ID: ${user.uid.substring(0, 5)}... (Guest)`;
+                    document.getElementById('admin-logout').classList.add('hidden');
+                } else {
+                    // Admin Logged In
+                    document.getElementById('user-status').innerText = `Admin: ${user.email} (Online)`;
+                    document.getElementById('user-status').classList.remove('text-gray-500');
+                    document.getElementById('user-status').classList.add('text-green-600', 'font-bold');
+                    document.getElementById('admin-logout').classList.remove('hidden');
+                }
                 loadBookings(user.uid);
+                loadBlogs(); // Load Blogs when connected
             } else {
                 document.getElementById('user-status').innerText = "Disconnected";
             }
         });
 
-        // --- 3. Load Data (Realtime) ---
+        // --- Admin Login Functions ---
+        window.openBlogModal = function() {
+            if (!currentUser) return alert("System connecting...");
+
+            // If user is anonymous, show Login Modal first
+            if (currentUser.isAnonymous) {
+                const modal = document.getElementById('admin-login-modal');
+                const content = document.getElementById('admin-login-content');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                // If already logged in as Admin, show Blog Form directly
+                showBlogForm();
+            }
+        };
+
+        window.closeAdminLoginModal = function() {
+            const modal = document.getElementById('admin-login-modal');
+            const content = document.getElementById('admin-login-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('admin-login-form').reset();
+            }, 300);
+        };
+
+        window.handleAdminLogin = async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('admin-login-btn');
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            btn.innerHTML = "Verifying...";
+            btn.disabled = true;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                closeAdminLoginModal();
+                showBlogForm(); // Open the blog form after successful login
+            } catch (error) {
+                console.error("Login failed:", error);
+                alert("Login failed: " + error.message);
+                btn.innerHTML = "Login";
+                btn.disabled = false;
+            }
+        };
+
+        window.logoutAdmin = async function() {
+            if(confirm("Logout from Admin mode?")) {
+                await signOut(auth);
+                // Auth listener will handle re-login as anonymous
+            }
+        }
+
+        // --- Blog Functions ---
+        function showBlogForm() {
+            const modal = document.getElementById('blog-modal');
+            const content = document.getElementById('blog-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        window.closeBlogModal = function() {
+            const modal = document.getElementById('blog-modal');
+            const content = document.getElementById('blog-modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('blog-form').reset();
+            }, 300);
+        }
+
+        // --- Booking & Data Loading ---
         function loadBookings(userId) {
             const listContainer = document.getElementById('booking-list');
             const bookingsRef = collection(db, 'artifacts', appId, 'users', userId, 'bookings');
@@ -995,12 +865,182 @@
             });
         }
 
+        // --- New: Load Blogs Logic ---
+        function loadBlogs() {
+            const blogContainer = document.getElementById('blog-list');
+            // Public data path: /artifacts/{appId}/public/data/blogs
+            const blogsRef = collection(db, 'artifacts', appId, 'public', 'data', 'blogs');
+
+            onSnapshot(blogsRef, async (snapshot) => {
+                if (snapshot.empty) {
+                    // ถ้ายังไม่มีข้อมูล ให้สร้างข้อมูลตัวอย่าง (Seeding)
+                    await seedBlogs(blogsRef);
+                    return;
+                }
+
+                let blogs = [];
+                snapshot.forEach(doc => {
+                    blogs.push({ id: doc.id, ...doc.data() });
+                });
+
+                // เรียงตามวันที่ (ถ้ามี) หรือแสดงตามลำดับ
+                blogContainer.innerHTML = blogs.map(blog => `
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://via.placeholder.com/400x250?text=Samui+Fixit'">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-cyan-600 shadow-sm">
+                                ${blog.category || 'Tip'}
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-3">
+                                <i class="ph-fill ph-calendar"></i> ${blog.date}
+                                <span>•</span>
+                                <i class="ph-fill ph-user"></i> ${blog.author}
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-cyan-600 transition">${blog.title}</h4>
+                            <p class="text-sm text-gray-500 mb-4 line-clamp-3 flex-grow">${blog.excerpt}</p>
+                            <a href="#" class="text-cyan-600 font-bold text-sm flex items-center gap-1 mt-auto hover:gap-2 transition-all">
+                                Read More <i class="ph-bold ph-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                `).join('');
+            }, (error) => {
+                console.error("Error loading blogs:", error);
+                const blogContainer = document.getElementById('blog-list');
+                // Don't show error to user for public blogs, just log it.
+                if (error.code === 'permission-denied') {
+                     // Maybe silent fail or show placeholder
+                }
+            });
+        }
+
+        // --- New: Seed Initial Blogs ---
+        async function seedBlogs(blogsRef) {
+            console.log("Seeding initial blogs...");
+            const sampleBlogs = [
+                {
+                    title: "5 Tips to Protect Your Villa in Rainy Season",
+                    excerpt: "หน้าฝนเกาะสมุยต้องระวัง! เรียนรู้วิธีดูแลรางน้ำ หลังคา และสระว่ายน้ำไม่ให้เขียวขุ่นในช่วงมรสุม",
+                    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+                    date: "12 Oct 2024",
+                    author: "Admin Team",
+                    category: "Maintenance"
+                },
+                {
+                    title: "Why is my AC Leaking Water? (ทำไมแอร์น้ำหยด)",
+                    excerpt: "ปัญหายอดฮิตของบ้านพักตากอากาศ สาเหตุหลักเกิดจากท่อน้ำทิ้งตันและฝุ่นสะสม วิธีแก้เบื้องต้นทำอย่างไร?",
+                    image: "https://images.unsplash.com/photo-1616423664074-907f3533b680?auto=format&fit=crop&w=800&q=80",
+                    date: "05 Nov 2024",
+                    author: "Chief Technician",
+                    category: "Repair Guide"
+                },
+                {
+                    title: "Best Plants for Samui Tropical Garden",
+                    excerpt: "แนะนำต้นไม้ทนแดด ทนไอทะเล ที่ปลูกแล้วสวย ดูแลง่าย เหมาะกับสภาพอากาศเกาะสมุย",
+                    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
+                    date: "20 Dec 2024",
+                    author: "Gardener Joy",
+                    category: "Gardening"
+                }
+            ];
+
+            try {
+                for (let i = 0; i < sampleBlogs.length; i++) {
+                    // Use setDoc with a specific ID to prevent duplicates if run multiple times
+                    await setDoc(doc(blogsRef, `sample-post-${i}`), sampleBlogs[i]);
+                }
+            } catch (e) {
+                console.error("Auto-seed failed (likely permission):", e);
+                // Fallback: Display purely via JS if write permission is denied
+                const blogContainer = document.getElementById('blog-list');
+                blogContainer.innerHTML = sampleBlogs.map(blog => `
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${blog.image}" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-cyan-600">${blog.category}</div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">${blog.title}</h4>
+                            <p class="text-sm text-gray-500">${blog.excerpt}</p>
+                        </div>
+                    </article>
+                `).join('');
+            }
+        }
+
+        // --- New: Blog Submission Logic ---
+        // Auto-generate slug from title
+        window.generateSlug = function() {
+            const title = document.getElementById('blog-title').value;
+            const slug = title.toLowerCase()
+                .replace(/[^a-z0-9ก-๙\s-]/g, '') // Remove special chars
+                .replace(/\s+/g, '-')         // Replace spaces with -
+                .replace(/-+/g, '-');         // Remove duplicate -
+            document.getElementById('blog-slug').value = slug;
+        };
+
+        window.submitBlog = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('blog-submit-btn');
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i> Publishing...';
+            btn.disabled = true;
+
+            // Basic Info
+            const title = document.getElementById('blog-title').value;
+            const excerpt = document.getElementById('blog-excerpt').value;
+            const author = document.getElementById('blog-author').value;
+            const category = document.getElementById('blog-category').value;
+            let image = document.getElementById('blog-image').value;
+            
+            // SEO Info
+            const slug = document.getElementById('blog-slug').value;
+            const metaDesc = document.getElementById('blog-meta-desc').value;
+            const keywords = document.getElementById('blog-keywords').value;
+            const imageAlt = document.getElementById('blog-alt').value;
+
+            // Random image if empty
+            if (!image) {
+                image = `https://source.unsplash.com/random/800x600/?${category.toLowerCase()},house`;
+            }
+
+            try {
+                const blogsRef = collection(db, 'artifacts', appId, 'public', 'data', 'blogs');
+                // Use slug as document ID if available for cleaner URLs later, or auto-ID
+                await addDoc(blogsRef, {
+                    title,
+                    excerpt,
+                    author,
+                    category,
+                    image,
+                    // Store SEO Data
+                    slug: slug || `post-${Date.now()}`,
+                    metaDescription: metaDesc || excerpt, // Fallback to excerpt
+                    keywords: keywords,
+                    imageAlt: imageAlt || title,
+                    date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+                    createdAt: serverTimestamp()
+                });
+                
+                alert("Article Posted Successfully! (SEO Data Saved)");
+                closeBlogModal();
+            } catch (error) {
+                console.error("Error posting blog:", error);
+                alert("Failed to post article. Please check your connection.");
+            } finally {
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            }
+        };
+
         // --- 4. Function to Send Line Notification via GAS ---
         async function sendLineNotification(data) {
             // ใส่ GAS URL ของคุณที่นี่
-            const GAS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzc2idbVBA2xAyRge0ZFbie8nMv5UUmRUw7DG-Bc4xp55HHn9lW2ZAiEG6hPIKWRfwt/exec'; 
+            const GAS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1SDBJXBg4vzk23dbeIVYKYiSCkardMDtwYloyFqafUUt-UTC8zX3AFvA9qDVbP5yE7g/exec'; 
 
-            if (GAS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzc2idbVBA2xAyRge0ZFbie8nMv5UUmRUw7DG-Bc4xp55HHn9lW2ZAiEG6hPIKWRfwt/exec' || GAS_SCRIPT_URL === '') {
+            if (GAS_SCRIPT_URL === 'YOUR_DEPLOYED_GAS_WEB_APP_URL' || GAS_SCRIPT_URL === '') {
                 console.warn("Skipping Line Notify: No GAS URL provided.");
                 return;
             }
@@ -1080,13 +1120,61 @@
         };
     </script>
 
-    <!-- UI Interaction Script (Updated for Dynamic Terms) -->
+    <!-- UI Scripts -->
     <script>
         // Toggle Mobile Menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+
+        // Open Blog Modal
+        function openBlogModal() {
+            // If user is anonymous, show Login Modal first
+            if (!currentUser || currentUser.isAnonymous) {
+                const modal = document.getElementById('admin-login-modal');
+                const content = document.getElementById('admin-login-content');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                // If already logged in as Admin, show Blog Form directly
+                showBlogForm();
+            }
+        }
+
+        function closeBlogModal() {
+            const modal = document.getElementById('blog-modal');
+            const content = document.getElementById('blog-modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('blog-form').reset();
+            }, 300);
+        }
+
+        // Close blog modal on click outside
+        document.getElementById('blog-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'blog-modal') closeBlogModal();
+        });
+
+        function closeAdminLoginModal() {
+            const modal = document.getElementById('admin-login-modal');
+            const content = document.getElementById('admin-login-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('admin-login-form').reset();
+            }, 300);
+        }
+
+        document.getElementById('admin-login-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'admin-login-modal') closeAdminLoginModal();
+        });
 
         // Data Dictionary for Service Terms
         const serviceDetails = {
