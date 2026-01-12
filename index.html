@@ -3,9 +3,16 @@
 <head>
     <meta name="google-site-verification" content="HMw5E_690Sj04dR1faZDWS-Q-Y_kqnpHDAq94yX8krE" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fix Layout: ป้องกันการซูมและบังคับความกว้างให้พอดีหน้าจอ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- SEO: Title & Meta Tags (Bilingual & Construction Focused) -->
+    <!-- PWA Settings -->
+    <meta name="theme-color" content="#0891b2"> <!-- สีของ Browser Toolbar -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Samui Fixit">
+    
+    <!-- SEO: Title & Meta Tags -->
     <title>Samui Fixit - Emergency 24/7, Construction & Villa Maintenance Koh Samui | ช่างฉุกเฉินและรับเหมาก่อสร้างเกาะสมุย</title>
     <meta name="description" content="24/7 Emergency Service in Koh Samui. Water leak, power outage, AC breakdown. Immediate response with clear rates. Professional Construction, Renovation, and Home Maintenance. บริการช่างฉุกเฉิน 24 ชม. รับเหมาก่อสร้าง รีโนเวท และดูแลวิลล่าครบวงจร บนเกาะสมุย">
     <meta name="keywords" content="Emergency Plumber Samui, Emergency Electrician Samui, 24/7 Handyman Samui, Samui Construction, Koh Samui Builder, Villa Renovation Samui, ช่างฉุกเฉินสมุย, ช่างไฟสมุย 24 ชม, ช่างประปาสมุย 24 ชม, รับเหมาก่อสร้างสมุย, ดูแลวิลล่าสมุย">
@@ -18,40 +25,6 @@
     <meta property="og:title" content="Samui Fixit - 24/7 Emergency & Construction Services">
     <meta property="og:description" content="Urgent help for water leaks, power outages. Trusted Builder & Maintenance Service in Koh Samui. ช่างด่วน 24 ชม. และรับสร้างบ้าน">
     <meta property="og:image" content="https://laravel.pixelstrap.net/fixit/frontend/images/logo/dark-logo.png">
-
-    <!-- Schema.org JSON-LD (Emergency Service) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "Samui Fixit Construction & Services",
-      "image": "https://laravel.pixelstrap.net/fixit/frontend/images/logo/dark-logo.png",
-      "description": "Leading construction and 24/7 emergency home maintenance company in Koh Samui.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123/4 Moo 1, Bophut",
-        "addressLocality": "Koh Samui",
-        "addressRegion": "Surat Thani",
-        "postalCode": "84320",
-        "addressCountry": "TH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "9.512017",
-        "longitude": "100.013593"
-      },
-      "url": "https://samuifixit.com",
-      "telephone": "+66638419593",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
-      ]
-    }
-    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,8 +35,16 @@
     <!-- Icons (Phosphor Icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+    <!-- PWA Icon Link (Dynamic) -->
+    <link rel="icon" type="image/png" href="https://laravel.pixelstrap.net/fixit/frontend/images/logo/dark-logo.png">
+    <link rel="apple-touch-icon" href="https://laravel.pixelstrap.net/fixit/frontend/images/logo/dark-logo.png">
+
     <style>
-        body { font-family: 'Prompt', sans-serif; }
+        body { 
+            font-family: 'Prompt', sans-serif; 
+            overflow-x: hidden; 
+            width: 100%;
+        }
         .service-card:hover { transform: translateY(-5px); }
         .tropical-bg {
             background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
@@ -74,14 +55,12 @@
         .pricing-table td { @apply border-b border-gray-100 py-3 px-4; }
         .pricing-table tr:hover { @apply bg-gray-50; }
         
-        /* Animation for Urgent Tag */
         @keyframes pulse-red {
             0%, 100% { background-color: #ef4444; }
             50% { background-color: #dc2626; }
         }
         .urgent-pulse { animation: pulse-red 2s infinite; }
 
-        /* Animation for Mobile Menu */
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -91,10 +70,10 @@
         }
     </style>
 </head>
-<body class="bg-blue-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-blue-50 text-gray-800 flex flex-col min-h-screen w-full">
 
     <!-- Top Bar -->
-    <div class="bg-cyan-900 text-cyan-100 text-xs py-2">
+    <div class="bg-cyan-900 text-cyan-100 text-xs py-2 w-full">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center flex-wrap gap-2">
             <div class="flex items-center gap-4">
                 <span class="flex items-center gap-1"><i class="ph-fill ph-phone"></i> <a href="tel:0638419593" class="hover:text-white transition">063-841-9593 (TH/EN)</a></span>
@@ -109,7 +88,7 @@
                         <path d="M21.35 9.87c0-4.63-4.5-8.4-10-8.4s-10 3.77-10 8.4c0 4.15 3.68 7.62 9.07 8.3.35.08.83.2.95.5.12.3.08.76-.08 1.34-.18.63-1.12 2.8-1.24 3.3-.1.52.28.52.72.28.58-.33 9.49-5.55 10.62-8.36 1.13-1.6 1.96-3.4 1.96-5.36z"/>
                     </svg>
                 </a>
-                <!-- Admin Logout (Hidden by default) -->
+                <!-- Admin Logout -->
                 <a href="#" id="admin-logout" onclick="logoutAdmin()" class="hidden text-red-300 hover:text-white ml-2 border-l border-cyan-700 pl-2">
                     <i class="ph-bold ph-sign-out"></i> Logout
                 </a>
@@ -118,9 +97,9 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 w-full">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center relative">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 flex-shrink-0">
                 <div class="bg-cyan-500 text-white p-2 rounded-lg shadow-lg">
                     <i class="ph-fill ph-island text-xl"></i>
                 </div>
@@ -142,10 +121,14 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <div class="text-sm text-gray-500 flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
-                    <span id="user-status" class="hidden sm:inline text-xs">Connecting...</span>
+                <div class="text-sm text-gray-500 flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100 hidden sm:flex">
+                    <span id="user-status" class="text-xs">Connecting...</span>
                     <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                 </div>
+                <!-- PWA Install Button (Hidden by default) -->
+                <button id="pwa-install-btn" class="hidden bg-cyan-100 text-cyan-700 p-2 rounded-lg hover:bg-cyan-200 transition" aria-label="Install App">
+                    <i class="ph-bold ph-download-simple"></i>
+                </button>
                 <!-- Mobile Menu Button -->
                 <button class="md:hidden text-2xl text-gray-600 p-1 focus:outline-none" aria-label="Menu" onclick="toggleMobileMenu()">
                     <i class="ph-bold ph-list"></i>
@@ -154,7 +137,7 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg left-0">
             <div class="flex flex-col p-4 gap-4 text-sm font-medium text-gray-600 animate-slide-down">
                 <a href="#" class="text-cyan-600 font-bold flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-house"></i> Home</a>
                 <a href="#emergency" class="text-red-600 font-bold flex items-center gap-2" onclick="toggleMobileMenu()"><i class="ph-bold ph-siren"></i> 24/7 Emergency</a>
@@ -168,7 +151,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white py-12 md:py-20 px-4 text-center rounded-b-[2rem] md:rounded-b-[3rem] shadow-xl relative overflow-hidden">
+    <header class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white py-12 md:py-20 px-4 text-center rounded-b-[2rem] md:rounded-b-[3rem] shadow-xl relative overflow-hidden w-full">
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')]"></div>
         <div class="absolute top-10 right-10 opacity-20 text-9xl"><i class="ph-fill ph-plant"></i></div>
         <div class="absolute bottom-10 left-10 opacity-20 text-8xl"><i class="ph-fill ph-sun"></i></div>
@@ -191,7 +174,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-10 relative z-20 flex-grow space-y-16 md:space-y-20">
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 -mt-10 relative z-20 flex-grow space-y-16 md:space-y-20 w-full">
         
         <!-- Emergency Section -->
         <section id="emergency" class="scroll-mt-28 bg-red-50 rounded-3xl shadow-xl overflow-hidden border-2 border-red-200 relative">
@@ -525,7 +508,7 @@
         </div>
     </div>
 
-    <!-- Blog Post Modal -->
+    <!-- Blog Post Modal (Updated for SEO) -->
     <div id="blog-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm overflow-y-auto">
         <div class="bg-white rounded-3xl w-full max-w-2xl p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 my-8" id="blog-modal-content">
             <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
@@ -561,6 +544,12 @@
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-1">Excerpt (เนื้อหาย่อ)</label>
                         <textarea id="blog-excerpt" rows="3" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition" placeholder="สรุปเนื้อหาให้น่าสนใจ..."></textarea>
+                    </div>
+
+                     <!-- NEW: Full Content Textarea -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Full Content (เนื้อหาฉบับเต็ม)</label>
+                        <textarea id="blog-content" rows="6" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 outline-none transition" placeholder="เขียนเนื้อหาบทความที่นี่... (รองรับ HTML เบื้องต้น)"></textarea>
                     </div>
 
                     <div>
@@ -611,39 +600,11 @@
         </div>
     </div>
 
-    <!-- Booking Modal -->
-    <div id="booking-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
-            <div class="flex justify-between items-center mb-4 border-b pb-3">
-                <div class="flex items-center gap-3"><div class="bg-blue-100 p-2 rounded-lg text-blue-600"><i class="ph-bold ph-calendar-check text-xl"></i></div><h3 class="text-xl font-bold text-gray-800">Booking / นัดหมาย</h3></div>
-                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-red-500 text-2xl transition" aria-label="Close">&times;</button>
-            </div>
-            <form id="booking-form" onsubmit="submitBooking(event)" class="overflow-y-auto max-h-[80vh]">
-                <div class="bg-blue-50 p-4 rounded-xl mb-6 flex justify-between items-center"><div class="w-full"><p class="text-xs text-blue-500 font-bold uppercase tracking-wider mb-1">Service</p><input type="text" id="service-name" class="bg-transparent border-none p-0 text-gray-800 font-bold w-full focus:ring-0 text-lg truncate" readonly></div></div>
-                <div id="service-terms" class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-xs text-yellow-800 hidden"></div>
-                <div class="mb-4" id="price-container"><label class="block text-sm font-semibold text-gray-600 mb-2">Est. Price / Rate</label><input type="text" id="service-price" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-500 focus:outline-none" readonly></div>
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Phone (เบอร์โทร)</label><input type="tel" id="booking-phone" required placeholder="08x-xxx-xxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
-                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Line / WhatsApp</label><input type="text" id="booking-social" placeholder="ID or Number" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
-                </div>
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Date</label><input type="date" id="booking-date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
-                    <div><label class="block text-sm font-semibold text-gray-600 mb-2">Time</label><input type="time" id="booking-time" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></div>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-semibold text-gray-600 mb-2">Location / Map Link</label>
-                    <div class="flex gap-2 mb-2"><input type="text" id="booking-map-link" placeholder="Paste Google Maps Link..." class="flex-grow bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition text-sm"><button type="button" onclick="getCurrentLocation()" class="bg-cyan-100 text-cyan-700 px-4 rounded-xl font-bold hover:bg-cyan-200 transition flex items-center gap-1 text-sm whitespace-nowrap"><i class="ph-bold ph-map-pin"></i> GPS</button></div>
-                    <textarea id="booking-note" rows="2" placeholder="Address detail e.g. Villa Lamai Soi 3 / บ้านเลขที่ 99..." class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition"></textarea>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-semibold text-gray-600 mb-2">Site Photo (รูปหน้างาน)</label>
-                    <div class="relative border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-cyan-500 transition-colors cursor-pointer" onclick="document.getElementById('booking-photo').click()">
-                        <input type="file" id="booking-photo" accept="image/*" class="hidden" onchange="handleFileSelect(this)"><div id="photo-preview" class="hidden mb-2"><img id="preview-img" src="" alt="Preview" class="h-24 mx-auto rounded-lg shadow-sm"><p class="text-xs text-green-600 mt-1 font-bold">Photo Selected!</p></div><div id="photo-placeholder"><i class="ph-duotone ph-image text-4xl text-gray-300 mb-2"></i><p class="text-xs text-gray-400">Click to upload photo<br>(Optional)</p></div>
-                    </div>
-                </div>
-                <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-cyan-500/30 flex justify-center items-center gap-2 text-lg"><span>Submit Request</span><i class="ph-bold ph-paper-plane-right"></i></button>
-            </form>
-        </div>
+    <!-- NEW: Blog Reader Modal -->
+    <div id="blog-reader-modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm overflow-y-auto">
+       <div class="bg-white rounded-3xl w-full max-w-3xl p-0 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 my-8 flex flex-col max-h-[90vh] overflow-hidden" id="blog-reader-content">
+          <!-- Content injected here -->
+       </div>
     </div>
 
     <!-- Floating Buttons -->
@@ -677,6 +638,7 @@
         const db = getFirestore(app);
 
         let currentUser = null;
+        window.blogCache = {}; // Cache for blogs
 
         // --- 2. Auto Login ---
         async function initApp() {
@@ -807,6 +769,9 @@
             }, 300);
         }
 
+        // --- Blog Reader Functions (New) ---
+        // Moved from module script for availability
+        
         // --- Booking & Data Loading ---
         function loadBookings(userId) {
             const listContainer = document.getElementById('booking-list');
@@ -880,14 +845,16 @@
 
                 let blogs = [];
                 snapshot.forEach(doc => {
-                    blogs.push({ id: doc.id, ...doc.data() });
+                    const data = doc.data();
+                    blogs.push({ id: doc.id, ...data });
+                    window.blogCache[doc.id] = { id: doc.id, ...data }; // Store in cache
                 });
 
                 // เรียงตามวันที่ (ถ้ามี) หรือแสดงตามลำดับ
                 blogContainer.innerHTML = blogs.map(blog => `
                     <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
                         <div class="h-48 overflow-hidden relative">
-                            <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.src='https://via.placeholder.com/400x250?text=Samui+Fixit'">
+                            <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Samui+Fixit';">
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-cyan-600 shadow-sm">
                                 ${blog.category || 'Tip'}
                             </div>
@@ -900,7 +867,7 @@
                             </div>
                             <h4 class="text-xl font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-cyan-600 transition">${blog.title}</h4>
                             <p class="text-sm text-gray-500 mb-4 line-clamp-3 flex-grow">${blog.excerpt}</p>
-                            <a href="#" class="text-cyan-600 font-bold text-sm flex items-center gap-1 mt-auto hover:gap-2 transition-all">
+                            <a href="javascript:void(0)" onclick="openBlogReader('${blog.id}')" class="text-cyan-600 font-bold text-sm flex items-center gap-1 mt-auto hover:gap-2 transition-all">
                                 Read More <i class="ph-bold ph-arrow-right"></i>
                             </a>
                         </div>
@@ -923,6 +890,7 @@
                 {
                     title: "5 Tips to Protect Your Villa in Rainy Season",
                     excerpt: "หน้าฝนเกาะสมุยต้องระวัง! เรียนรู้วิธีดูแลรางน้ำ หลังคา และสระว่ายน้ำไม่ให้เขียวขุ่นในช่วงมรสุม",
+                    content: "หน้าฝนบนเกาะสมุยอาจนำมาซึ่งปัญหาต่างๆ สำหรับเจ้าของวิลล่า\n\n1. ตรวจสอบรางน้ำฝน: ใบไม้อาจอุดตันทำให้น้ำล้น\n2. ดูแลสระว่ายน้ำ: ฝนทำค่า pH เปลี่ยน ควรวัดค่าบ่อยขึ้น\n3. หลังคารั่ว: ตรวจสอบรอยแตกร้าวก่อนมรสุมมา\n\nการดูแลสม่ำเสมอจะช่วยประหยัดค่าซ่อมแซมในระยะยาวได้มากครับ.",
                     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
                     date: "12 Oct 2024",
                     author: "Admin Team",
@@ -931,6 +899,7 @@
                 {
                     title: "Why is my AC Leaking Water? (ทำไมแอร์น้ำหยด)",
                     excerpt: "ปัญหายอดฮิตของบ้านพักตากอากาศ สาเหตุหลักเกิดจากท่อน้ำทิ้งตันและฝุ่นสะสม วิธีแก้เบื้องต้นทำอย่างไร?",
+                    content: "แอร์น้ำหยดเป็นปัญหากวนใจอันดับหนึ่ง สาเหตุส่วนใหญ่เกิดจาก:\n- ท่อน้ำทิ้งอุดตันจากเมือกและฝุ่น\n- แผ่นกรองอากาศสกปรกจนลมผ่านไม่ได้\n- ถาดรองน้ำทิ้งเอียงหรือแตก\n\nแนะนำให้ล้างแอร์ใหญ่ทุก 6 เดือนเพื่อป้องกันปัญหานี้ครับ.",
                     image: "https://images.unsplash.com/photo-1616423664074-907f3533b680?auto=format&fit=crop&w=800&q=80",
                     date: "05 Nov 2024",
                     author: "Chief Technician",
@@ -939,6 +908,7 @@
                 {
                     title: "Best Plants for Samui Tropical Garden",
                     excerpt: "แนะนำต้นไม้ทนแดด ทนไอทะเล ที่ปลูกแล้วสวย ดูแลง่าย เหมาะกับสภาพอากาศเกาะสมุย",
+                    content: "เกาะสมุยมีแดดจัดและไอทะเล ต้นไม้ที่เหมาะควรเป็นไม้ทนแล้งและทนเค็มได้ดี เช่น:\n1. ลีลาวดี (Plumeria): ดอกหอม ทนทาน\n2. หมากเหลือง (Yellow Palm): ให้ร่มเงา ดูแลง่าย\n3. เฟื่องฟ้า (Bougainvillea): สีสันสดใส ชอบแดดจัด\n\nเลือกต้นไม้ให้ถูกประเภท จะช่วยให้สวนสวยตลอดปีโดยไม่ต้องดูแลมากครับ.",
                     image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
                     date: "20 Dec 2024",
                     author: "Gardener Joy",
@@ -991,6 +961,7 @@
             // Basic Info
             const title = document.getElementById('blog-title').value;
             const excerpt = document.getElementById('blog-excerpt').value;
+            const content = document.getElementById('blog-content').value; // Get Full Content
             const author = document.getElementById('blog-author').value;
             const category = document.getElementById('blog-category').value;
             let image = document.getElementById('blog-image').value;
@@ -1003,7 +974,8 @@
 
             // Random image if empty
             if (!image) {
-                image = `https://source.unsplash.com/random/800x600/?${category.toLowerCase()},house`;
+                // Using picsum instead of deprecated source.unsplash.com
+                image = `https://picsum.photos/800/600?random=${Date.now()}`;
             }
 
             try {
@@ -1012,6 +984,7 @@
                 await addDoc(blogsRef, {
                     title,
                     excerpt,
+                    content, // Save Full Content
                     author,
                     category,
                     image,
@@ -1156,11 +1129,6 @@
             }, 300);
         }
 
-        // Close blog modal on click outside
-        document.getElementById('blog-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'blog-modal') closeBlogModal();
-        });
-
         function closeAdminLoginModal() {
             const modal = document.getElementById('admin-login-modal');
             const content = document.getElementById('admin-login-content');
@@ -1172,9 +1140,77 @@
             }, 300);
         }
 
-        document.getElementById('admin-login-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'admin-login-modal') closeAdminLoginModal();
-        });
+        function openBlogReader(blogId) {
+            const blog = window.blogCache[blogId];
+            if (!blog) return;
+
+            const modal = document.getElementById('blog-reader-modal');
+            const content = document.getElementById('blog-reader-content');
+            
+            // Build content HTML
+            content.innerHTML = `
+                <div class="h-64 sm:h-80 w-full relative shrink-0">
+                    <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4">
+                        <button onclick="closeBlogReader()" class="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition">
+                            <i class="ph-bold ph-arrow-left text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
+                        <span class="bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">${blog.category || 'Article'}</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">${blog.title}</h2>
+                        <div class="flex items-center gap-4 text-gray-300 text-sm mt-2">
+                             <span class="flex items-center gap-1"><i class="ph-fill ph-user"></i> ${blog.author}</span>
+                             <span class="flex items-center gap-1"><i class="ph-fill ph-calendar"></i> ${blog.date}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 sm:p-10 overflow-y-auto bg-white">
+                    <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                         ${blog.content ? blog.content.replace(/\n/g, '<br>') : `<p class="text-lg font-medium text-gray-600">${blog.excerpt}</p><p class="text-gray-400 italic mt-8 text-center">... End of preview ...</p>`}
+                    </div>
+                    <div class="mt-10 pt-6 border-t border-gray-100 flex justify-between items-center">
+                        <span class="text-xs text-gray-400">Share this article</span>
+                        <div class="flex gap-3">
+                             <button class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200"><i class="ph-fill ph-facebook-logo"></i></button>
+                             <button class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-200"><i class="ph-fill ph-line-logo"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeBlogReader() {
+            const modal = document.getElementById('blog-reader-modal');
+            const content = document.getElementById('blog-reader-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                content.innerHTML = ''; // Clear content
+            }, 300);
+        }
+
+        // --- Safe Event Listeners ---
+        const addModalListener = (id, closeFunc) => {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id === id) closeFunc();
+                });
+            }
+        };
+
+        addModalListener('booking-modal', closeBookingModal);
+        addModalListener('blog-modal', closeBlogModal);
+        addModalListener('admin-login-modal', closeAdminLoginModal);
+        addModalListener('blog-reader-modal', closeBlogReader);
 
         // Data Dictionary for Service Terms
         const serviceDetails = {
